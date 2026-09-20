@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Enactus BITS Hyderabad
 
-## Getting Started
+A site for the Enactus chapter at BITS Pilani, Hyderabad Campus — its projects,
+the 2025-26 season, and how to get in touch.
 
-First, run the development server:
+Built for the Enactus BITS Hyderabad Tech Team inductions (Task A).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Why this stack
+
+**Next.js 16 (App Router) + TypeScript + Tailwind v4.**
+
+- Every page is a static component with no client-side data fetching, so all four
+  routes prerender at build time and ship as HTML. `next build` reports them as
+  `○ (Static)`.
+- `next/image` handles the report photos — it emits WebP/AVIF at the right size
+  per device, and because every image carries explicit `width`/`height`, nothing
+  reflows as they load.
+- `next/font` self-hosts Space Grotesk and Inter, so there is no render-blocking
+  request to Google and no flash of unstyled text.
+- Only two components are client-side: the nav (mobile menu state) and `Reveal`
+  (an `IntersectionObserver`). Everything else is a server component.
+
+## Content is data, not markup
+
+All copy lives in `content/` as typed modules. Pages map over it; they do not
+hardcode it.
+
+```
+content/
+  site.ts       chapter identity, nav, teams, partners
+  projects.ts   case studies + the roster of earlier initiatives
+  events.ts     the 2025-26 timeline
+  impact.ts     headline numbers
+  media.ts      image paths with baked-in dimensions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Adding next season's events means editing `events.ts`. Nobody has to touch a
+component, which matters for a site handed to a new tech team every year.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where the content came from
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Everything on the site traces back to one of three sources:
 
-## Learn More
+1. The chapter's **Annual Report 2025-26** (the bulk of it — projects, events,
+   numbers, and all 21 photos plus the logo)
+2. The chapter's **LinkedIn** page
+3. The chapter's **Instagram** bio
 
-To learn more about Next.js, take a look at the following resources:
+### Content notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A few things worth flagging rather than papering over:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Five projects have no published descriptions.** Medha, Vikalp, Oorja,
+  Maithri and Tejas are named in the annual report and nowhere else. They are
+  listed as a roster on `/projects` rather than given invented write-ups.
+- **Prize figures conflict between sources.** The annual report puts Break The
+  Case '25 at ₹30,000; the event's own poster and the Consulting Group's
+  LinkedIn post both say ₹1.25 lakh+. The site uses ₹1.25 lakh+, since two
+  primary sources agree on it.
+- **The annual report PDF is gitignored.** It is an internal chapter document,
+  so it does not belong in a public repo. Only the extracted images are
+  committed.
+- **One image was deliberately left out** — the inductions poster carries two
+  members' personal phone numbers.
 
-## Deploy on Vercel
+## Running it
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open http://localhost:3000.
+
+```bash
+npm run build   # production build
+npm run lint    # eslint
+```
+
+## Deployment
+
+Hosted on Vercel and linked to this repository, so every push to `main` builds
+and deploys automatically.
