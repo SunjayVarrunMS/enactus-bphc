@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { site } from "@/content/site";
+import { site, siteUrl } from "@/content/site";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -16,7 +16,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://enactus-bphc.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} — entrepreneurial action, on campus`,
     template: `%s — ${site.name}`,

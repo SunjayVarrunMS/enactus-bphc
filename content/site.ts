@@ -1,3 +1,5 @@
+export const siteUrl = "https://enactus-bphc.vercel.app";
+
 export const site = {
   name: "Enactus BITS Hyderabad",
   shortName: "Enactus BPHC",
