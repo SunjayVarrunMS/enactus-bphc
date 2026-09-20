@@ -74,7 +74,7 @@ export const events: EventItem[] = [
       "The flagship consulting case competition at ATMOS, run over three rounds: an online quiz, a case submission, then on-campus final presentations.",
     facts: [
       "1,000+ participants",
-      "Prize pool worth ₹1.25 lakh+",
+      "Prize pool of ₹30,000",
       "Judged by industry professionals from BCG and Deloitte",
     ],
     image: media.breakTheCase,

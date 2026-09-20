@@ -55,10 +55,10 @@ A few things worth flagging rather than papering over:
 - **Five projects have no published descriptions.** Medha, Vikalp, Oorja,
   Maithri and Tejas are named in the annual report and nowhere else. They are
   listed as a roster on `/projects` rather than given invented write-ups.
-- **Prize figures conflict between sources.** The annual report puts Break The
-  Case '25 at ₹30,000; the event's own poster and the Consulting Group's
-  LinkedIn post both say ₹1.25 lakh+. The site uses ₹1.25 lakh+, since two
-  primary sources agree on it.
+- **The annual report is the final word on figures.** It puts Break The Case
+  '25 at a ₹30,000 prize pool, and the site uses that. The event's poster and
+  the Consulting Group's LinkedIn post say ₹1.25 lakh+, but where sources
+  disagree the report wins.
 - **The annual report PDF is gitignored.** It is an internal chapter document,
   so it does not belong in a public repo. Only the extracted images are
   committed.
