@@ -1,5 +1,7 @@
 # Enactus BITS Hyderabad
 
+**Live:** https://enactus-bphc.vercel.app
+
 A site for the Enactus chapter at BITS Pilani, Hyderabad Campus — its projects,
 the 2025-26 season, and how to get in touch.
 
